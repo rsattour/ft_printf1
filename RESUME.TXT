@@ -1,0 +1,61 @@
+1. '-' (Left alignment)     Wins over: '0'
+2. '+' (Plus sign)         Wins over: ' ' (space)
+3. '.' (Precision)         Wins over: '0'
+4. '#' (Alternate form)    Compatible with all
+5. '0' (Zero padding)      Loses to: '-', '.'
+6. ' ' (Space)            Loses to: '+'
+------------------------------------------
+'-' : works with all
+'0' : works with: d,i,u,x,X,o,%
+'+' : works with: d,i only
+' ' : works with: d,i only
+'#' : works with: x,X,o only
+'.' : works with: d,i,u,x,X,o,s
+------------------------------------------
+printf("|%+-#08.3x|", 42);   //"|+0x02a   |"  
+// '-' wins over '0'
+// '+' wins over ' '
+// '.' wins over '0'
+// '#' adds '0x'
+---------------------------------------------
+printf("|%0#-8.3x|", 42);    //"|0x02a   |"
+// Same result, different order of flags
+----------------------------------------------
+printf("|% +-8.3d|", 42);    //"|+042    |"
+// '+' wins over space
+// '-' wins over '0'
+// '.3' sets precision
+----------------------------------------------
+printf("|%5d|", 42);       //"|   42|"      (right-aligned with spaces)
+printf("|%05d|", 42);      //"|00042|"      (right-aligned with zeros)
+printf("|%-5d|", 42);      //"|42   |"      (left-aligned with spaces)
+printf("|%.5d|", 42);      //"|00042|"      (minimum 5 digits with leading zeros)
+printf("|%5.3d|", 42);     //"|  042|"      (width 5, precision 3)
+printf("|%-5.3d|", 42);    //"|042  |"      (left-aligned, precision 3)
+----------------------------------------------
+
+Sign flags:
+printf("|%+d|", 42);       //"|+42|"        (force plus sign)
+printf("|% d|", 42);       //"| 42|"        (space if no sign)
+printf("|%+d|", -42);      //"|-42|"        (minus sign)
+
+----------------------------------------------
+Hexadecimal/Octal:
+printf("|%#x|", 42);       //"|0x2a|"       (0x prefix for hex)
+printf("|%#o|", 42);       //"|052|"        (0 prefix for octal)
+
+----------------------------------------------
+Combined examples:
+printf("|%+05d|", 42);     //"|+0042|"      (plus and zero padding)
+printf("|% 5d|", 42);      //"|   42|"      (space and width)
+printf("|%+-5d|", 42);     //"|+42  |"      (plus and left-align)
+printf("|%#8x|", 42);      //"|    0x2a|"   (hex prefix and width)
+printf("|%-#8x|", 42);     //"|0x2a    |"   (hex prefix and left-align)
+printf("|%+.5d|", 42);     //"|+00042|"     (plus and precision)
+printf("|% .5d|", 42);     //"| 00042|"     (space and precision)
+
+----------------------------------------------
+Zero special cases:
+printf("|%.0d|", 0);       //"|"|           (zero with .0 precision)
+printf("|%#.0x|", 0);      //"|"|           (zero with .0 precision hex)
+printf("|%5.0d|", 0);      //"|     |"      (zero with .0 precision and width)
