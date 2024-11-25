@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 
 SRC =	ft_printf.c ft_countnbr.c \
-	ft_printnegativ.c \
+	ft_printnegativ.c  ft_printptr.c\
 	ft_printstring.c \
 	ft_choose.c \
 	ft_printnumber.c \
@@ -13,9 +13,9 @@ SRC =	ft_printf.c ft_countnbr.c \
 OBJ = $(SRC:.c=.o)
 OBSRCB = $(SRCB:.c=.o)
 
-all: $(NAME) $(OBSRCB) 
+all: $(NAME)
 
-bonus : $(OBSRCB) 
+bonus: $(NAME) $(OBSRCB)
 
 $(NAME): $(OBJ)
 	$(AR) $(NAME) $(OBJ)

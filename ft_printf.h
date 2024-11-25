@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ader <ader@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:27:25 by risattou          #+#    #+#             */
-/*   Updated: 2024/11/24 17:20:14 by risattou         ###   ########.fr       */
+/*   Updated: 2024/11/25 00:38:17 by ader             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,11 @@ typedef struct s_flags
 int		ft_printf(const char *str, ...);
 int		ft_choose(const char **str, va_list *args, t_flag *flag);
 int		ft_printstring(char *str, t_flag *flag);
-int		ft_printnumber(size_t nbr, char *base, int check, t_flag *flag);
+int		ft_printnumber(unsigned int nbr, char *base, t_flag *flag);
+int		ft_printptr(size_t nbr, char *base, t_flag *flag);
 int		ft_printnegative(int nbr, t_flag *flag);
 int		ft_putchar(char c, t_flag *flag);
-int ft_countnbr_base(size_t nbr,int len);
-int ft_countnbr(long nbr);
+int		ft_countnbr_base(unsigned int nbr,int len);
+int		ft_countnbr(long nbr);
 
 #endif

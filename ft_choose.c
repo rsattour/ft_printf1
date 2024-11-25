@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_choose.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ader <ader@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:27:22 by risattou          #+#    #+#             */
-/*   Updated: 2024/11/24 16:11:52 by risattou         ###   ########.fr       */
+/*   Updated: 2024/11/25 00:45:56 by ader             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,14 @@ int	ft_choose(const char **str, va_list *args, t_flag *flag)
 	else if (**str == 's')
 		count += ft_printstring(va_arg(*args, char *), flag);
 	else if (**str == 'u')
-		count += ft_printnumber(va_arg(*args, size_t), "0123456789", 0, flag);
+		count += ft_printnumber(va_arg(*args, unsigned int), "0123456789", flag);
 	else if (**str == 'X')
-		count += ft_printnumber(va_arg(*args, size_t), "0123456789ABCDEF", 0,
-				flag);
+		count += ft_printnumber(va_arg(*args, unsigned int), "0123456789ABCDEF",flag);
 	else if (**str == 'x')
-		count += ft_printnumber(va_arg(*args, size_t), "0123456789abcdef", 0,
+		count += ft_printnumber(va_arg(*args, unsigned int), "0123456789abcdef",
 				flag);
 	else if (**str == 'p')
-		count += ft_printnumber(va_arg(*args, size_t), "0123456789abcdef", 1,
+		count += ft_printptr(va_arg(*args, size_t), "0123456789abcdef",
 				flag);
 	else if (**str == '%')
 		count += ft_putchar('%', flag);

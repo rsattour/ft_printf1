@@ -20,7 +20,7 @@ int ft_countnbr(long nbr)
 	return (i);
 }
 
-int ft_countnbr_base(size_t nbr,int len)
+int ft_countnbr_base(unsigned int nbr,int len)
 {
 	int	i;
 
