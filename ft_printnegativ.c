@@ -6,12 +6,11 @@
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:27:28 by risattou          #+#    #+#             */
-/*   Updated: 2024/11/25 22:39:07 by risattou         ###   ########.fr       */
+/*   Updated: 2024/11/25 23:52:31 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int	ft_printnegative(int nb, t_flag *flag)
 {

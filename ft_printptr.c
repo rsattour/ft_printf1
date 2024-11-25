@@ -6,7 +6,7 @@
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:27:31 by risattou          #+#    #+#             */
-/*   Updated: 2024/11/25 21:30:48 by risattou         ###   ########.fr       */
+/*   Updated: 2024/11/25 23:59:45 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,6 @@ static int	ft_len(char *base)
 	while (base[i])
 		i++;
 	return (i);
-}
-static int	ft_zero(t_flag *flag,int len)
-{
-	int	count;
-
-	count = 0;
-	while(flag->full_stop > len)
-	{
-		count += write(1,"0",1);
-		flag->full_stop--;
-	}
-	return count;
-
 }
 static int	ft_printr(size_t num, char *base, size_t len)
 {
@@ -48,23 +35,32 @@ static int	ft_printr(size_t num, char *base, size_t len)
 		count += ft_putchar(base[num], 0);
 	return (count);
 }
+int ft_countnbr_base1(size_t nbr,int len)
+{
+	int	i;
 
+	i = 0;
+	if (nbr == 0)
+		return (1);
+	while (nbr > 0)
+	{
+		nbr /= len;
+		i++;
+	}
+	return (i);
+}
 int	ft_printptr(size_t nbr, char *base, t_flag *flag)
 {
 	int	count;
 	int len ;
 
 	count = 0;
-	len = ft_countnbr_base(nbr,ft_len(base),0)+2;
-	if(flag && len < flag->full_stop)
-		len = flag->full_stop;
+	len = ft_countnbr_base1(nbr,ft_len(base))+2;
 	if(flag && flag->dash == 0 && flag->number > count +len )
 		{
 			flag->number -= len;
 			count += ft_putchar(' ',flag);
 		}
-	if(flag && ( flag->full_stop >= len))
-		count += ft_zero(flag,ft_countnbr_base(nbr,ft_len(base)+2,0));	
 	count += ft_printstring("0x", 0);
 	count += ft_printr(nbr, base, ft_len(base));
 	if(flag && flag->dash == 1 && flag->number > count)
