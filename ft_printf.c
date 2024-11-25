@@ -6,11 +6,12 @@
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:27:18 by risattou          #+#    #+#             */
-/*   Updated: 2024/11/25 16:44:04 by risattou         ###   ########.fr       */
+/*   Updated: 2024/11/25 21:47:00 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include <stdio.h>
 
 static void	ft_flage(const char **str, t_flag *flag)
 {

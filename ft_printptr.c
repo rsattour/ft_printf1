@@ -6,7 +6,7 @@
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:27:31 by risattou          #+#    #+#             */
-/*   Updated: 2024/11/25 17:13:40 by risattou         ###   ########.fr       */
+/*   Updated: 2024/11/25 21:30:48 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	ft_printptr(size_t nbr, char *base, t_flag *flag)
 	int len ;
 
 	count = 0;
-	len = ft_countnbr_base(nbr,ft_len(base))+2;
+	len = ft_countnbr_base(nbr,ft_len(base),0)+2;
 	if(flag && len < flag->full_stop)
 		len = flag->full_stop;
 	if(flag && flag->dash == 0 && flag->number > count +len )
@@ -64,7 +64,7 @@ int	ft_printptr(size_t nbr, char *base, t_flag *flag)
 			count += ft_putchar(' ',flag);
 		}
 	if(flag && ( flag->full_stop >= len))
-		count += ft_zero(flag,ft_countnbr_base(nbr,ft_len(base)+2));	
+		count += ft_zero(flag,ft_countnbr_base(nbr,ft_len(base)+2,0));	
 	count += ft_printstring("0x", 0);
 	count += ft_printr(nbr, base, ft_len(base));
 	if(flag && flag->dash == 1 && flag->number > count)

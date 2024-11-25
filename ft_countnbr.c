@@ -20,11 +20,13 @@ int ft_countnbr(long nbr)
 	return (i);
 }
 
-int ft_countnbr_base(unsigned int nbr,int len)
+int ft_countnbr_base(unsigned int nbr,int len,t_flag *flag)
 {
 	int	i;
 
 	i = 0;
+	if(flag && nbr == 0 && flag->full_stop > -1)
+		return 0;
 	if (nbr == 0)
 		return (1);
 	while (nbr > 0)

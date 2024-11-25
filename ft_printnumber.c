@@ -6,7 +6,7 @@
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:27:31 by risattou          #+#    #+#             */
-/*   Updated: 2024/11/25 17:15:45 by risattou         ###   ########.fr       */
+/*   Updated: 2024/11/25 21:46:54 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,13 @@ int	ft_printnumber(unsigned int nbr, char *base, t_flag *flag)
 	int len ;
 
 	count = 0;
-	len = ft_countnbr_base(nbr,ft_len(base));
+	len = ft_countnbr_base(nbr,ft_len(base),flag);
 	if(flag && flag->hash == 1 && nbr > 0)
 			count += ft_hash(base);
-	if(flag && len < flag->full_stop)
+	if(flag && ((len < flag->full_stop) || (nbr == 0 && flag->full_stop == 0)))
+	{
 		len = flag->full_stop;
+	}
 	if(flag && ((flag->dash == 0 && flag->number > count + len)))
 	{
 		flag->number -= (len+count);
@@ -92,9 +94,10 @@ int	ft_printnumber(unsigned int nbr, char *base, t_flag *flag)
 		else
 			count += ft_putchar(' ',flag);
 	}
-	if(flag && ( flag->full_stop >= len))
-			count += ft_zero(flag,ft_countnbr_base(nbr,ft_len(base)));	
-	count += ft_printr(nbr, base, ft_len(base));
+	if(flag && ( flag->full_stop >= ft_countnbr_base(nbr,ft_len(base),flag)))
+		count += ft_zero(flag,ft_countnbr_base(nbr,ft_len(base),flag));
+	if(flag && !(nbr == 0 && flag->full_stop > -1))
+		count += ft_printr(nbr, base, ft_len(base));
 	if(flag && flag->dash == 1  && flag->number > count)
 		{
 			flag->number -= count;
