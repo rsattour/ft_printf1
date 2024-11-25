@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ader <ader@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:27:18 by risattou          #+#    #+#             */
-/*   Updated: 2024/11/25 00:46:54 by ader             ###   ########.fr       */
+/*   Updated: 2024/11/25 16:44:04 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ static void	ft_flage(const char **str, t_flag *flag)
 	if (**str == '.')
 	{
 		(*str)++;
+		flag->zero = 0;
 		flag->full_stop = 0;
 		while (**str >= 48 && **str <= 57)
 		{

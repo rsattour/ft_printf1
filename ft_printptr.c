@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printptr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ader <ader@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:27:31 by risattou          #+#    #+#             */
-/*   Updated: 2024/11/25 00:47:52 by ader             ###   ########.fr       */
+/*   Updated: 2024/11/25 17:13:40 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,19 @@ static int	ft_len(char *base)
 	while (base[i])
 		i++;
 	return (i);
+}
+static int	ft_zero(t_flag *flag,int len)
+{
+	int	count;
+
+	count = 0;
+	while(flag->full_stop > len)
+	{
+		count += write(1,"0",1);
+		flag->full_stop--;
+	}
+	return count;
+
 }
 static int	ft_printr(size_t num, char *base, size_t len)
 {
@@ -39,13 +52,19 @@ static int	ft_printr(size_t num, char *base, size_t len)
 int	ft_printptr(size_t nbr, char *base, t_flag *flag)
 {
 	int	count;
+	int len ;
 
 	count = 0;
-	if(flag && flag->dash == 0 && flag->number > count + ft_countnbr_base(nbr,ft_len(base))+2)
+	len = ft_countnbr_base(nbr,ft_len(base))+2;
+	if(flag && len < flag->full_stop)
+		len = flag->full_stop;
+	if(flag && flag->dash == 0 && flag->number > count +len )
 		{
-			flag->number -= ft_countnbr_base(nbr,ft_len(base))+2;
+			flag->number -= len;
 			count += ft_putchar(' ',flag);
 		}
+	if(flag && ( flag->full_stop >= len))
+		count += ft_zero(flag,ft_countnbr_base(nbr,ft_len(base)+2));	
 	count += ft_printstring("0x", 0);
 	count += ft_printr(nbr, base, ft_len(base));
 	if(flag && flag->dash == 1 && flag->number > count)

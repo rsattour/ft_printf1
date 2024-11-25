@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printnegativ.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ader <ader@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:27:28 by risattou          #+#    #+#             */
-/*   Updated: 2024/11/25 00:48:39 by ader             ###   ########.fr       */
+/*   Updated: 2024/11/25 16:52:03 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 int	ft_printnegative(int nb, t_flag *flag)
 {
