@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printnegativ.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ader <ader@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:27:28 by risattou          #+#    #+#             */
-/*   Updated: 2024/11/26 03:47:52 by ader             ###   ########.fr       */
+/*   Updated: 2024/11/26 20:35:34 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,12 @@ int	ft_printnegative(int nb, t_flag *flag)
 	// 		flag->space = 0;
 	if(flag && flag->dash == 0 && flag->zero == 0 && flag->number >  len+flag->plus)
 		{
-			flag->number -=len + flag->plus;
+			flag->number -=(len + flag->plus);
+			// printf("$%i$",flag->number);
 			if(len == flag->full_stop && nbr < 0)
 					flag->number--;
-			count += ft_putchar(' ',flag);
+			if(!(nbr < 0 && flag->number == 0))	
+				count += ft_putchar(' ',flag);
 			flag->space = 0;
 			flag->number = 0;
 		}
