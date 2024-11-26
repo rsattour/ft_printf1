@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printnumber.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ader <ader@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:27:31 by risattou          #+#    #+#             */
-/*   Updated: 2024/11/25 21:46:54 by risattou         ###   ########.fr       */
+/*   Updated: 2024/11/26 04:46:51 by ader             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int ft_hash(char *base)
 	return count;
 }
 //-----------------------------------------------------------------------------------------------
-static int	ft_zero(t_flag *flag,int len)
+static int	ft_zero(t_flag *flag,int len,char *base)
 {
 	int	count;
 
@@ -64,6 +64,9 @@ static int	ft_zero(t_flag *flag,int len)
 		}
 		return count;
 	}
+	if(flag->hash == 2)
+		count +=ft_hash(base);
+	flag->hash = 0;
 	while(flag &&flag->number > 0)
 	{
 		count += write(1,"0",1);
@@ -80,22 +83,22 @@ int	ft_printnumber(unsigned int nbr, char *base, t_flag *flag)
 
 	count = 0;
 	len = ft_countnbr_base(nbr,ft_len(base),flag);
-	if(flag && flag->hash == 1 && nbr > 0)
-			count += ft_hash(base);
 	if(flag && ((len < flag->full_stop) || (nbr == 0 && flag->full_stop == 0)))
 	{
 		len = flag->full_stop;
 	}
-	if(flag && ((flag->dash == 0 && flag->number > count + len)))
+	if(flag && ((flag->dash == 0 && flag->number > count + len+ flag->hash)))
 	{
-		flag->number -= (len+count);
-		if(flag->zero ==1)
-			count += ft_zero(flag,1);
-		else
+		flag->number -= (len+count+flag->hash);
+		if(flag->zero == 0)
 			count += ft_putchar(' ',flag);
+		if(flag->zero ==1)
+				count += ft_zero(flag,1,base);
 	}
+	if(flag && flag->hash == 2)
+			count += ft_hash(base);
 	if(flag && ( flag->full_stop >= ft_countnbr_base(nbr,ft_len(base),flag)))
-		count += ft_zero(flag,ft_countnbr_base(nbr,ft_len(base),flag));
+		count += ft_zero(flag,ft_countnbr_base(nbr,ft_len(base),flag),base);
 	if(flag && !(nbr == 0 && flag->full_stop > -1))
 		count += ft_printr(nbr, base, ft_len(base));
 	if(flag && flag->dash == 1  && flag->number > count)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ader <ader@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:27:18 by risattou          #+#    #+#             */
-/*   Updated: 2024/11/25 21:47:00 by risattou         ###   ########.fr       */
+/*   Updated: 2024/11/26 04:34:45 by ader             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	ft_flage(const char **str, t_flag *flag)
 		else if (**str == '+')
 			flag->plus = 1;
 		else if (**str == '#')
-			flag->hash = 1;
+			flag->hash = 2;
 		else if (**str == '0')
 			flag->zero = 1;
 		else if (**str == '-')
