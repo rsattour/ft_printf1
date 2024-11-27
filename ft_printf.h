@@ -6,7 +6,7 @@
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:27:25 by risattou          #+#    #+#             */
-/*   Updated: 2024/11/27 05:07:10 by risattou         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:58:21 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 

@@ -6,7 +6,7 @@
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:27:18 by risattou          #+#    #+#             */
-/*   Updated: 2024/11/27 04:03:08 by risattou         ###   ########.fr       */
+/*   Updated: 2024/11/27 15:56:00 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,6 @@ int	ft_printf(const char *str, ...)
 	t_flag	flag;
 	va_list	args;
 
-	if (write(1, 0, 0) < 0)
-		return (-1);
 	va_start(args, str);
 	count = 0;
 	while (*str)
@@ -85,7 +83,7 @@ int	ft_printf(const char *str, ...)
 			count += ft_choose(&str, &args, &flag);
 		}
 		else
-			count += write(1, str++, 1);
+			count += ft_putchar(*str++,0);
 	}
 	va_end(args);
 	return (count);

@@ -6,7 +6,7 @@
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 05:07:42 by risattou          #+#    #+#             */
-/*   Updated: 2024/11/27 05:07:56 by risattou         ###   ########.fr       */
+/*   Updated: 2024/11/27 09:42:01 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int	ft_zero(t_flag *flag, int len, char *base)
 	{
 		while (flag->full_stop > len)
 		{
-			count += write(1, "0", 1);
+			write(1, "0", 1);
+			count ++; 
 			flag->full_stop--;
 		}
 		return (count);
@@ -43,7 +44,8 @@ int	ft_zero(t_flag *flag, int len, char *base)
 	flag->hash = 0;
 	while (flag && flag->number > 0)
 	{
-		count += write(1, "0", 1);
+		write(1, "0", 1);
+		count ++; 
 		flag->number--;
 	}
 	return (count);
