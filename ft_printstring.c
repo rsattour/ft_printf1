@@ -6,7 +6,7 @@
 /*   By: ader <ader@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:27:34 by risattou          #+#    #+#             */
-/*   Updated: 2024/11/25 00:38:02 by ader             ###   ########.fr       */
+/*   Updated: 2024/11/27 02:08:18 by ader             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,7 @@ int	ft_printstring(char *str, t_flag *flag)
 			count += ft_putchar(' ', 0);
 	}
 	while (*str != '\0' && len--)
-	{
-		count += ft_putchar(*str, 0);
-		str++;
-	}
+		count += ft_putchar(*str++, 0);
 	if (flag && flag->dash == 1 && flag->number > count)
 	{
 		flag->number -= count;
@@ -52,5 +49,3 @@ int	ft_printstring(char *str, t_flag *flag)
 	}
 	return (count);
 }
-
-

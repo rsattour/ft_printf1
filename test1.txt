@@ -1,6 +1,0 @@
-Error in test 108: ft_printf("%0#5x, %0#5x, %0#5x, %0#5x, %0#5x, %0#5x, %0#5x, %0#5x, %0#5x, %0#5x", 0, 5, -1, -10, 0x1234, -1862, 0xABCDE, INT_MIN, INT_MAX, UINT_MAX): different memory
-Error in test 109: ft_printf("%0#10x, %0#10x, %0#10x, %0#10x, %0#10x, %0#10x, %0#10x, %0#10x, %0#10x, %0#10x", 0, 5, -1, -10, 0x1234, -1862, 0xABCDE, INT_MIN, INT_MAX, UINT_MAX): different memory
-Error in test 110: ft_printf("%0#100x, %0#100x, %0#100x, %0#100x, %0#100x, %0#100x, %0#100x, %0#100x, %0#100x, %0#100x", 0, 5, -1, -10, 0x1234, -1862, 0xABCDE, INT_MIN, INT_MAX, UINT_MAX): different memory
-Error in test 108: ft_printf("%0#5X, %0#5X, %0#5X, %0#5X, %0#5X, %0#5X, %0#5X, %0#5X, %0#5X, %0#5X", 0, 5, -1, -10, 0x1234, -1862, 0xABCDE, INT_MIN, INT_MAX, UINT_MAX): different memory
-Error in test 109: ft_printf("%0#10X, %0#10X, %0#10X, %0#10X, %0#10X, %0#10X, %0#10X, %0#10X, %0#10X, %0#10X", 0, 5, -1, -10, 0x1234, -1862, 0xABCDE, INT_MIN, INT_MAX, UINT_MAX): different memory
-Error in test 110: ft_printf("%0#100X, %0#100X, %0#100X, %0#100X, %0#100X, %0#100X, %0#100X, %0#100X, %0#100X, %0#100X", 0, 5, -1, -10, 0x1234, -1862, 0xABCDE, INT_MIN, INT_MAX, UINT_MAX): different memory

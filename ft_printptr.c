@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printptr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ader <ader@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:27:31 by risattou          #+#    #+#             */
-/*   Updated: 2024/11/25 23:59:45 by risattou         ###   ########.fr       */
+/*   Updated: 2024/11/27 01:51:32 by ader             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static int	ft_len(char *base)
 		i++;
 	return (i);
 }
+
 static int	ft_printr(size_t num, char *base, size_t len)
 {
 	int	count;
@@ -35,7 +36,8 @@ static int	ft_printr(size_t num, char *base, size_t len)
 		count += ft_putchar(base[num], 0);
 	return (count);
 }
-int ft_countnbr_base1(size_t nbr,int len)
+
+int	ft_countnbr_base1(size_t nbr, int len)
 {
 	int	i;
 
@@ -49,24 +51,25 @@ int ft_countnbr_base1(size_t nbr,int len)
 	}
 	return (i);
 }
+
 int	ft_printptr(size_t nbr, char *base, t_flag *flag)
 {
 	int	count;
-	int len ;
+	int	len;
 
 	count = 0;
-	len = ft_countnbr_base1(nbr,ft_len(base))+2;
-	if(flag && flag->dash == 0 && flag->number > count +len )
-		{
-			flag->number -= len;
-			count += ft_putchar(' ',flag);
-		}
+	len = ft_countnbr_base1(nbr, ft_len(base)) + 2;
+	if (flag && flag->dash == 0 && flag->number > count + len)
+	{
+		flag->number -= len;
+		count += ft_putchar(' ', flag);
+	}
 	count += ft_printstring("0x", 0);
 	count += ft_printr(nbr, base, ft_len(base));
-	if(flag && flag->dash == 1 && flag->number > count)
-		{
-			flag->number -= count;
-			count += ft_putchar(' ',flag);
-		}
+	if (flag && flag->dash == 1 && flag->number > count)
+	{
+		flag->number -= count;
+		count += ft_putchar(' ', flag);
+	}
 	return (count);
 }

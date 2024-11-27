@@ -15,7 +15,7 @@
 int	ft_putchar(char c, t_flag *flag)
 {
 	int	count;
-	
+
 	count = 0;
 	if (flag && flag->number > 0 && flag->dash == 0)
 	{

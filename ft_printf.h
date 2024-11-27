@@ -14,9 +14,9 @@
 # define FT_PRINTF_H
 
 # include <stdarg.h>
+# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 
 typedef struct s_flags
 {
@@ -37,7 +37,7 @@ int		ft_printnumber(unsigned int nbr, char *base, t_flag *flag);
 int		ft_printptr(size_t nbr, char *base, t_flag *flag);
 int		ft_printnegative(int nbr, t_flag *flag);
 int		ft_putchar(char c, t_flag *flag);
-int ft_countnbr_base(unsigned int nbr,int len,t_flag *flag);
+int		ft_countnbr_base(unsigned int nbr, int len, t_flag *flag);
 int		ft_countnbr(long nbr);
 
 #endif

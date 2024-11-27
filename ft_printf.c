@@ -6,17 +6,30 @@
 /*   By: ader <ader@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:27:18 by risattou          #+#    #+#             */
-/*   Updated: 2024/11/26 04:34:45 by ader             ###   ########.fr       */
+/*   Updated: 2024/11/27 02:04:50 by ader             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
+static int	ft_atoi(const char **str)
+{
+	int	result;
+
+	result = 0;
+	while (**str >= 48 && **str <= 57)
+	{
+		result = result * 10 + **str - 48;
+		(*str)++;
+	}
+	return (result);
+}
+
 static void	ft_flage(const char **str, t_flag *flag)
 {
 	while (**str == ' ' || **str == '+' || **str == '#' || **str == '0'
-		|| **str == '-' )
+		|| **str == '-')
 	{
 		if (**str == ' ')
 			flag->space = 1;
@@ -30,21 +43,15 @@ static void	ft_flage(const char **str, t_flag *flag)
 			flag->dash = 1;
 		(*str)++;
 	}
-	while (**str >= 48 && **str <= 57)
-	{
-		flag->number = flag->number * 10 + **str - 48;
-		(*str)++;
-	}
+	if (**str >= 48 && **str <= 57)
+		flag->number = ft_atoi(str);
 	if (**str == '.')
 	{
 		(*str)++;
 		flag->zero = 0;
 		flag->full_stop = 0;
-		while (**str >= 48 && **str <= 57)
-		{
-			flag->full_stop = flag->full_stop * 10 + **str - 48;
-			(*str)++;
-		}
+		if (**str >= 48 && **str <= 57)
+			flag->full_stop = ft_atoi(str);
 	}
 }
 

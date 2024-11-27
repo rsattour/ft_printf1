@@ -24,15 +24,16 @@ int	ft_choose(const char **str, va_list *args, t_flag *flag)
 	else if (**str == 's')
 		count += ft_printstring(va_arg(*args, char *), flag);
 	else if (**str == 'u')
-		count += ft_printnumber(va_arg(*args, unsigned int), "0123456789", flag);
+		count += ft_printnumber(va_arg(*args, unsigned int), "0123456789",
+				flag);
 	else if (**str == 'X')
-		count += ft_printnumber(va_arg(*args, unsigned int), "0123456789ABCDEF",flag);
+		count += ft_printnumber(va_arg(*args, unsigned int), "0123456789ABCDEF",
+				flag);
 	else if (**str == 'x')
 		count += ft_printnumber(va_arg(*args, unsigned int), "0123456789abcdef",
 				flag);
 	else if (**str == 'p')
-		count += ft_printptr(va_arg(*args, size_t), "0123456789abcdef",
-				flag);
+		count += ft_printptr(va_arg(*args, size_t), "0123456789abcdef", flag);
 	else if (**str == '%')
 		count += ft_putchar('%', flag);
 	if (**str)

@@ -6,7 +6,7 @@
 /*   By: ader <ader@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:27:31 by risattou          #+#    #+#             */
-/*   Updated: 2024/11/26 04:46:51 by ader             ###   ########.fr       */
+/*   Updated: 2024/11/27 01:58:05 by ader             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	ft_len(char *base)
 		i++;
 	return (i);
 }
-//-----------------------------------------------------------------------------------------------
+
 static int	ft_printr(unsigned int num, char *base, unsigned int len)
 {
 	int	count;
@@ -37,75 +37,71 @@ static int	ft_printr(unsigned int num, char *base, unsigned int len)
 		count += ft_putchar(base[num], 0);
 	return (count);
 }
-//-----------------------------------------------------------------------------------------------
-static int ft_hash(char *base)
-{
-	int count ;
-	count = 0;
-	if(base[10] == 'a')
-		count += ft_printstring("0x",0);
-	else if(base[10] == 'A')
-		count += ft_printstring("0X",0);
-	return count;
-}
-//-----------------------------------------------------------------------------------------------
-static int	ft_zero(t_flag *flag,int len,char *base)
+
+static int	ft_hash(char *base)
 {
 	int	count;
 
 	count = 0;
-	if(flag->full_stop >= len)
+	if (base[10] == 'a')
+		count += ft_printstring("0x", 0);
+	else if (base[10] == 'A')
+		count += ft_printstring("0X", 0);
+	return (count);
+}
+
+static int	ft_zero(t_flag *flag, int len, char *base)
+{
+	int	count;
+
+	count = 0;
+	if (flag->full_stop >= len)
 	{
-		// printf("||%i||",len);
-		while(flag->full_stop > len)
+		while (flag->full_stop > len)
 		{
-			count += write(1,"0",1);
+			count += write(1, "0", 1);
 			flag->full_stop--;
 		}
-		return count;
+		return (count);
 	}
-	if(flag->hash == 2)
-		count +=ft_hash(base);
+	if (flag->hash == 2)
+		count += ft_hash(base);
 	flag->hash = 0;
-	while(flag &&flag->number > 0)
+	while (flag && flag->number > 0)
 	{
-		count += write(1,"0",1);
+		count += write(1, "0", 1);
 		flag->number--;
 	}
-	return count;
+	return (count);
 }
-//-----------------------------------------------------------------------------------------------
 
 int	ft_printnumber(unsigned int nbr, char *base, t_flag *flag)
 {
 	int	count;
-	int len ;
+	int	len;
 
 	count = 0;
-	len = ft_countnbr_base(nbr,ft_len(base),flag);
-	if(flag && ((len < flag->full_stop) || (nbr == 0 && flag->full_stop == 0)))
-	{
+	len = ft_countnbr_base(nbr, ft_len(base), flag);
+	if (flag && ((len < flag->full_stop) || (nbr == 0 && flag->full_stop == 0)))
 		len = flag->full_stop;
-	}
-	if(flag && ((flag->dash == 0 && flag->number > count + len+ flag->hash)))
+	if (flag && ((flag->dash == 0 && flag->number > count + len + flag->hash)))
 	{
-		flag->number -= (len+count+flag->hash);
-		if(flag->zero == 0)
-			count += ft_putchar(' ',flag);
-		if(flag->zero ==1)
-				count += ft_zero(flag,1,base);
+		flag->number -= (len + count + flag->hash);
+		if (flag->zero == 0)
+			count += ft_putchar(' ', flag);
+		if (flag->zero == 1)
+			count += ft_zero(flag, 1, base);
 	}
-	if(flag && flag->hash == 2)
-			count += ft_hash(base);
-	if(flag && ( flag->full_stop >= ft_countnbr_base(nbr,ft_len(base),flag)))
-		count += ft_zero(flag,ft_countnbr_base(nbr,ft_len(base),flag),base);
-	if(flag && !(nbr == 0 && flag->full_stop > -1))
+	if (flag && flag->hash == 2)
+		count += ft_hash(base);
+	if (flag && (flag->full_stop >= ft_countnbr_base(nbr, ft_len(base), flag)))
+		count += ft_zero(flag, ft_countnbr_base(nbr, ft_len(base), flag), base);
+	if (flag && !(nbr == 0 && flag->full_stop > -1))
 		count += ft_printr(nbr, base, ft_len(base));
-	if(flag && flag->dash == 1  && flag->number > count)
-		{
-			flag->number -= count;
-			count += ft_putchar(' ',flag);
-		}
-	
+	if (flag && flag->dash == 1 && flag->number > count)
+	{
+		flag->number -= count;
+		count += ft_putchar(' ', flag);
+	}
 	return (count);
 }
