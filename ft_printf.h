@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ader <ader@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:27:25 by risattou          #+#    #+#             */
-/*   Updated: 2024/11/26 03:27:54 by ader             ###   ########.fr       */
+/*   Updated: 2024/11/27 05:07:10 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,8 @@ int		ft_printnegative(int nbr, t_flag *flag);
 int		ft_putchar(char c, t_flag *flag);
 int		ft_countnbr_base(unsigned int nbr, int len, t_flag *flag);
 int		ft_countnbr(long nbr);
+int		ft_hash(char *base);
+int		ft_zero(t_flag *flag, int len, char *base);
+void	ft_helper(t_flag *flag, int *count, int len, char *base);
 
 #endif

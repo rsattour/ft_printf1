@@ -8,7 +8,7 @@ SRC =	ft_printf.c ft_countnbr.c \
 	ft_printstring.c \
 	ft_choose.c \
 	ft_printnumber.c \
-	ft_putchar.c
+	ft_putchar.c ft_helpnumber.c
 
 OBJ = $(SRC:.c=.o)
 OBSRCB = $(SRCB:.c=.o)

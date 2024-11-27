@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ader <ader@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/24 15:27:18 by risattou          #+#    #+#             */
-/*   Updated: 2024/11/27 02:04:50 by ader             ###   ########.fr       */
+/*   Updated: 2024/11/27 04:03:08 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include <stdio.h>
 
 static int	ft_atoi(const char **str)
 {
@@ -72,6 +71,8 @@ int	ft_printf(const char *str, ...)
 	t_flag	flag;
 	va_list	args;
 
+	if (write(1, 0, 0) < 0)
+		return (-1);
 	va_start(args, str);
 	count = 0;
 	while (*str)
@@ -84,11 +85,7 @@ int	ft_printf(const char *str, ...)
 			count += ft_choose(&str, &args, &flag);
 		}
 		else
-		{
-			write(1, str, 1);
-			count++;
-			str++;
-		}
+			count += write(1, str++, 1);
 	}
 	va_end(args);
 	return (count);
