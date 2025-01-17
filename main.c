@@ -63,12 +63,37 @@ int main(int ac,char *av[])
     while(i < ac)
     {
         if(ft_space(av[i]) == 1)
-           {if( ft_split(av[i],32,&head) == 0)
-               { return 0;}}
+           {
+                if( ft_split(av[i],32,&head) == 0)
+                {
+                    ft_lstclear(&head);
+                    return 0;
+                }
+            }
         else 
             if (ft_lstadd_back(&head, ft_lstnew (ft_atoi(av[i]))) == 0)
-                {return 0;}
+                {
+                    ft_lstclear(&head);
+                    return 0;
+                }
         i++;
     }
-    
+    t_list *stack_a = head;
+    t_list *stack_b = NULL;
+    // swap_a(&stack_a);
+    // push_b(&stack_b,&stack_a);
+    // rotate_a(&stack_a);
+    ft_lstindex(&stack_a);
+    // reverse_rotate_a(&stack_a);
+    ft_sortlist(&stack_a);
+    printf("A:");
+    printList(stack_a);
+    printf("B:");
+    printList(stack_b);
+    // push_a(&stack_a,&stack_b);
+    // printf("A:");
+    // printList(stack_a);
+    // printf("B:");
+    // printList(stack_b);
+    // push_a(&stack_a,&stack_b);
 }
