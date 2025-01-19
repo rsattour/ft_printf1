@@ -30,4 +30,7 @@ void reverse_rotate_b(t_list **stack_b);
 void	ft_lstindex(t_list **lst);
 void	ft_lstclear(t_list **lst);
 void ft_sortlist(t_list **stack_a);
+void printList(t_list *head);
+void ft_sort(t_list **stack_a,t_list **stack_b);
+void sort_5(t_list **stack_a);
 #endif

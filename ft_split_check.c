@@ -6,7 +6,7 @@
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 14:59:42 by risattou          #+#    #+#             */
-/*   Updated: 2025/01/16 17:37:36 by risattou         ###   ########.fr       */
+/*   Updated: 2025/01/18 22:04:28 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,8 @@ static int	ft_count(char const *str, char c)
 
 static int	ft_home( char *str, char c)
 {
-	int	index;
 	int	i;
-	int node ;
 
-	index = 0;
 	i = 0;
    
 	while (str[i])
