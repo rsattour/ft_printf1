@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 00:13:25 by risattou          #+#    #+#             */
-/*   Updated: 2024/11/07 00:13:26 by risattou         ###   ########.fr       */
+/*   Created: 2024/10/30 07:59:50 by risattou          #+#    #+#             */
+/*   Updated: 2025/01/20 18:52:23 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pushswap.h"
 
-size_t	ft_strlen(const char *str)
+void	ft_lstclear(t_list **lst)
 {
-	size_t	i;
+	t_list	*head;
+	t_list	*new;
 
-	i = 0;
-	while (str[i] != '\0')
-		i++;
-	return (i);
+	if (!lst)
+		return ;
+	head = *lst;
+	while (head != NULL)
+	{
+		new = head->next;
+		free(head);
+		head = new;
+	}
+	*lst = NULL;
 }

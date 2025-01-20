@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 07:59:50 by risattou          #+#    #+#             */
-/*   Updated: 2024/11/01 00:11:51 by risattou         ###   ########.fr       */
+/*   Created: 2024/11/07 00:11:57 by risattou          #+#    #+#             */
+/*   Updated: 2025/01/20 18:52:35 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pushswap.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+void	ft_lstlast(t_list **lst)
 {
-	t_list	*head;
-	t_list	*new;
+	t_list	*tmp1;
+	t_list	*tmp;
 
-	if (!lst || !del)
+	if (!(*lst))
 		return ;
-	head = *lst;
-	while (head != NULL)
-	{
-		new = head->next;
-		ft_lstdelone(head, del);
-		head = new;
-	}
-	*lst = NULL;
+	tmp1 = *lst;
+	while (tmp1->next->next != NULL)
+		tmp1 = tmp1->next;
+	tmp = tmp1->next;
+	tmp1->next = NULL;
 }

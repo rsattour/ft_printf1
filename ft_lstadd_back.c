@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/30 05:49:38 by risattou          #+#    #+#             */
-/*   Updated: 2024/10/31 12:40:06 by risattou         ###   ########.fr       */
+/*   Created: 2025/01/20 13:21:39 by risattou          #+#    #+#             */
+/*   Updated: 2025/01/20 18:51:41 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pushswap.h"
 
-int	ft_lstsize(t_list *lst)
+int	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	int	i;
+	t_list	*head;
 
-	i = 0;
-	while (lst != NULL)
+	head = *lst;
+	if (!lst || !new)
+		return (0);
+	if (*lst == NULL)
+		*lst = new;
+	else
 	{
-		lst = lst->next;
-		i++;
+		while (head->next != NULL)
+		{
+			if (head->nb == new->nb)
+				return (ft_error());
+			head = head->next;
+		}
+		if (head->nb == new->nb)
+			return (ft_error());
+		head->next = new;
 	}
-	return (i);
+	return (1);
 }

@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 00:12:34 by risattou          #+#    #+#             */
-/*   Updated: 2024/11/07 00:12:35 by risattou         ###   ########.fr       */
+/*   Created: 2025/01/20 18:40:03 by risattou          #+#    #+#             */
+/*   Updated: 2025/01/20 18:49:20 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pushswap.h"
 
-void	*ft_memset(void *b, int c, size_t len)
+void	ft_putchar(char c)
 {
-	size_t	i;
+	write(1, &c, 1);
+}
+
+void	ft_putstr(char *str)
+{
+	int	i;
 
 	i = 0;
-	while (i < len)
+	if (!str)
+		return ;
+	while (str[i] != '\0')
 	{
-		((unsigned char *)b)[i] = c;
+		ft_putchar(str[i]);
 		i++;
 	}
-	return (b);
 }

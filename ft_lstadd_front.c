@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 00:14:00 by risattou          #+#    #+#             */
-/*   Updated: 2024/11/07 00:14:01 by risattou         ###   ########.fr       */
+/*   Created: 2025/01/20 13:21:47 by risattou          #+#    #+#             */
+/*   Updated: 2025/01/20 18:52:27 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pushswap.h"
 
-int	ft_tolower(int c)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (c >= 65 && c <= 90)
-		c += 32;
-	return (c);
+	if (!new || !lst)
+		return ;
+	new->next = *lst;
+	*lst = new;
 }

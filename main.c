@@ -1,104 +1,116 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/20 13:11:49 by risattou          #+#    #+#             */
+/*   Updated: 2025/01/20 18:50:57 by risattou         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pushswap.h"
 
+static int	ft_check(char *av)
+{
+	int	i;
 
-int ft_check(char *av)
-{
-    int  i = 0;
-    while(av[i])
-    {
-        if(!((av[i] >= '0' && av[i] <= '9') || av[i] == 32 || av[i] == '-'|| av[i] == '+'))
-        {
+	i = 0;
+	while (av[i])
+	{
+		if (!((av[i] >= '0' && av[i] <= '9') || av[i] == 32 || av[i] == '-'
+				|| av[i] == '+'))
+			return (ft_error());
+		i++;
+	}
+	return (1);
+}
 
-            printf("ERROR");
-            return 0;
-        }
-        i++;
-    }
-    return 1;
-}
-int ft_space(char *av)
+static int	ft_space(char *av)
 {
-    int i = 0;
-    while(av[i])
-    {
-        if(av[i] == 32)
-            return 1;
-        i++;
-    }
-    return 0;
+	int	i;
+
+	i = 0;
+	while (av[i])
+	{
+		if (av[i] == 32)
+			return (1);
+		i++;
+	}
+	return (0);
 }
-void printList(t_list *head) {
-    t_list *current = head;
-    while (current != NULL) {
-        printf("%d|%d++ ", current->nb, current->index); 
-        current = current->next;
-    }
-    printf("\n");
-}
-int main(int ac,char *av[])
+
+static int	ft_check_av(int ac, char *av[])
 {
-    if(ac <= 1)
-        return 0;
-    int i = 1;
-    while(i < ac)
-    {
-        if(ft_check(av[i]) == 0)
-            return 0;
-        i++;
-    }
-    i = 1;
-    while(i < ac)
-    {
-        if(ft_space(av[i]) == 1)
-        {
-            if(ft_split_check(av[i],32) == 0)
-            return 0;
-        }
-        else if(ft_atoi_check(av[i]) == 0)
-            return 0;
-        i++;
-    }
-    i = 1;
-    t_list *head = NULL;
-    while(i < ac)
-    {
-        if(ft_space(av[i]) == 1)
-           {
-                if( ft_split(av[i],32,&head) == 0)
-                {
-                    ft_lstclear(&head);
-                    return 0;
-                }
-            }
-        else 
-            if (ft_lstadd_back(&head, ft_lstnew (ft_atoi(av[i]))) == 0)
-                {
-                    ft_lstclear(&head);
-                    return 0;
-                }
-        i++;
-    }
-    t_list *stack_a = head;
-    t_list *stack_b = NULL;
-    ft_sortlist(&stack_a);
-    // ft_lstindex(&stack_a);
-    ft_sort(&stack_a, &stack_b);
-    // sort_5(&stack_a);
-    // push_a(&stack_a,&stack_b);
-    // push_b(&stack_b,&stack_a);
-    // push_b(&stack_b,&stack_a);
-    // swap_a(&stack_a);
-    // swap_b(&stack_b);
-    // swap_b(&stack_b);
-    // rotate_a(&stack_a);
-    // reverse_rotate_a(&stack_a);
-    // printf("A:");
-    // printList(stack_a);
-    // printf("B:");
-    // printList(stack_b);
-    // printf("A:");
-    // printList(stack_a);
-    // printf("B:");
-    // printList(stack_b);
-    // push_a(&stack_a,&stack_b);
+	int	i;
+
+	i = 1;
+	while (i < ac)
+	{
+		if (ft_check(av[i]) == 0)
+			return (0);
+		i++;
+	}
+	i = 1;
+	while (i < ac)
+	{
+		if (ft_space(av[i]) == 1)
+		{
+			if (ft_split_check(av[i], 32) == 0)
+				return (0);
+		}
+		else if (ft_atoi_check(av[i]) == 0)
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+static int	ft_create_list(int ac, char *av[], t_list **head)
+{
+	int	i;
+
+	i = 1;
+	while (i < ac)
+	{
+		if (ft_space(av[i]) == 1)
+		{
+			if (ft_split(av[i], 32, head) == 0)
+			{
+				ft_lstclear(head);
+				return (0);
+			}
+		}
+		else if (ft_lstadd_back(head, ft_lstnew(ft_atoi(av[i]))) == 0)
+		{
+			ft_lstclear(head);
+			return (0);
+		}
+		i++;
+	}
+	return (1);
+}
+
+int	main(int ac, char *av[])
+{
+	int		i;
+	t_list	*head;
+	t_list	*stack_a;
+	t_list	*stack_b;
+
+	if (ac <= 1)
+		return (0);
+	i = 1;
+	if (ft_check_av(ac, av) == 0)
+		return (0);
+	head = NULL;
+	if (ft_create_list(ac, av, &head) == 0)
+		return (0);
+	stack_a = head;
+	stack_b = NULL;
+	ft_sortlist(&stack_a);
+	if (ft_lstsize(stack_a) > 1)
+		ft_sort(&stack_a, &stack_b);
+	return (0);
 }

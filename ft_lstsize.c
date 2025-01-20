@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_lstsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 00:11:52 by risattou          #+#    #+#             */
-/*   Updated: 2024/11/07 00:11:53 by risattou         ###   ########.fr       */
+/*   Created: 2024/10/30 05:49:38 by risattou          #+#    #+#             */
+/*   Updated: 2025/01/20 18:52:49 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "pushswap.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+int	ft_lstsize(t_list *lst)
 {
-	t_list	*head;
-	t_list	*new;
+	int	i;
 
-	if (!lst || !f)
-		return ;
-	head = lst;
-	while (head != NULL)
+	i = 0;
+	while (lst != NULL)
 	{
-		new = head;
-		f(new->content);
-		head = head->next;
+		lst = lst->next;
+		i++;
+	}
+	return (i);
+}
+
+void	ft_lstindex(t_list **lst)
+{
+	int		i;
+	t_list	*tmp;
+
+	i = 0;
+	tmp = *lst;
+	while (tmp != NULL)
+	{
+		tmp->index = i;
+		tmp = tmp->next;
+		i++;
 	}
 }

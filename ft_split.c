@@ -6,7 +6,7 @@
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 14:59:42 by risattou          #+#    #+#             */
-/*   Updated: 2025/01/16 16:27:58 by risattou         ###   ########.fr       */
+/*   Updated: 2025/01/20 18:54:21 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,27 +31,6 @@ static int	ft_count(char const *str, char c)
 	return (cont);
 }
 
-// static char	*ft_strdupp(char *str, char c)
-// {
-// 	int		i;
-// 	char	*new;
-
-// 	i = 0;
-// 	while (str[i] != c && str[i])
-// 		i++;
-// 	new = (char *)malloc(i + 1);
-// 	if (new == NULL)
-// 		return (NULL);
-// 	i = 0;
-// 	while (str[i] != c && str[i])
-// 	{
-// 		new[i] = str[i];
-// 		i++;
-// 	}
-// 	new[i] = '\0';
-// 	return (new);
-// }
-
 static void	*ft_free(char **new, int index)
 {
 	while (index >= 0)
@@ -60,11 +39,11 @@ static void	*ft_free(char **new, int index)
 	return (NULL);
 }
 
-static int	ft_home(t_list **lst, char *str, char c)
+int	ft_split(char const *str, char c, t_list **lst)
 {
-	int	index;
-	int	i;
-	t_list *node ;
+	int		index;
+	int		i;
+	t_list	*node;
 
 	index = 0;
 	i = 0;
@@ -75,24 +54,11 @@ static int	ft_home(t_list **lst, char *str, char c)
 		if (str[i] != c && str[i])
 		{
 			node = ft_lstnew(ft_atoi((char *)(str + i)));
-			if (node == NULL ||ft_lstadd_back(lst,node)== 0 )
+			if (node == NULL || ft_lstadd_back(lst, node) == 0)
 				return (0);
 		}
 		while (str[i] != c && str[i])
 			i++;
 	}
 	return (1);
-}
-
-int ft_split(char const *str, char c,t_list **lst)
-{
-	// int		cont;
-	// // char	**new;
-
-	// cont = ft_count(str, c) + 1;
-	// new = (char **)malloc(sizeof(char *) * cont);
-	// if (new == NULL)
-	// 	return (NULL);
-	return (ft_home(lst, (char *)str, c));
-		
 }
