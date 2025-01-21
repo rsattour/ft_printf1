@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_split_check_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 14:59:42 by risattou          #+#    #+#             */
-/*   Updated: 2025/01/20 18:54:21 by risattou         ###   ########.fr       */
+/*   Updated: 2025/01/21 12:45:42 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include "pushswap_bonus.h"
 
 static int	ft_count(char const *str, char c)
 {
@@ -31,21 +31,10 @@ static int	ft_count(char const *str, char c)
 	return (cont);
 }
 
-static void	*ft_free(char **new, int index)
+static int	ft_home(char *str, char c)
 {
-	while (index >= 0)
-		free(new[index--]);
-	free(new);
-	return (NULL);
-}
+	int	i;
 
-int	ft_split(char const *str, char c, t_list **lst)
-{
-	int		index;
-	int		i;
-	t_list	*node;
-
-	index = 0;
 	i = 0;
 	while (str[i])
 	{
@@ -53,12 +42,18 @@ int	ft_split(char const *str, char c, t_list **lst)
 			i++;
 		if (str[i] != c && str[i])
 		{
-			node = ft_lstnew(ft_atoi((char *)(str + i)));
-			if (node == NULL || ft_lstadd_back(lst, node) == 0)
+			if (ft_atoi_check((char *)(str + i)) == 0)
 				return (0);
 		}
 		while (str[i] != c && str[i])
 			i++;
 	}
 	return (1);
+}
+
+int	ft_split_check(char const *str, char c)
+{
+	if (ft_count(str, c) == 0)
+		return (ft_error());
+	return (ft_home((char *)str, c));
 }

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_five_or_less.c                             :+:      :+:    :+:   */
+/*   ft_sort_five_or_less_bonus.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 17:10:34 by risattou          #+#    #+#             */
-/*   Updated: 2025/01/20 18:43:11 by risattou         ###   ########.fr       */
+/*   Updated: 2025/01/21 12:45:35 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#include "pushswap_bonus.h"
 
 static void	sort_threenmbr(t_list **stack_a)
 {
@@ -86,7 +86,8 @@ void	sort_five_or_less(t_list **stack_a, t_list **stack_b)
 	if (size == 2)
 	{
 		if ((*stack_a)->index > (*stack_a)->next->index)
-			return (swap_a(stack_a));
+			swap_a(stack_a);
+		return ;
 	}
 	if (size == 3)
 		return (sort_threenmbr(stack_a));
