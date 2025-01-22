@@ -6,77 +6,58 @@
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 13:47:38 by risattou          #+#    #+#             */
-/*   Updated: 2025/01/21 12:45:47 by risattou         ###   ########.fr       */
+/*   Updated: 2025/01/22 13:26:34 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap_bonus.h"
 
-static int	ft_position(t_list **stack_b, int max)
+int	ft_check_rule(t_list **stack_a, t_list **stack_b, char *str)
 {
-	t_list	*tmp;
-	int		i;
-
-	tmp = *stack_b;
-	i = 0;
-	while (tmp != NULL)
-	{
-		if (tmp->index == max)
-			return (i);
-		tmp = tmp->next;
-		i++;
-	}
-	return (i);
+	if (!ft_strcmp(str, "sa\n"))
+		swap_a(stack_a);
+	else if (!ft_strcmp(str, "sb\n"))
+		swap_b(stack_b);
+	else if (!ft_strcmp(str, "ss\n"))
+		swap_a_b(stack_a, stack_b);
+	else if (!ft_strcmp(str, "pa\n"))
+		push_a(stack_a, stack_b);
+	else if (!ft_strcmp(str, "pb\n"))
+		push_b(stack_b, stack_a);
+	else if (!ft_strcmp(str, "ra\n"))
+		rotate_a(stack_a);
+	else if (!ft_strcmp(str, "rb\n"))
+		rotate_b(stack_b);
+	else if (!ft_strcmp(str, "rr\n"))
+		rotate_a_b(stack_a, stack_b);
+	else if (!ft_strcmp(str, "rra\n"))
+		reverse_rotate_a(stack_a);
+	else if (!ft_strcmp(str, "rrb\n"))
+		reverse_rotate_b(stack_b);
+	else if (!ft_strcmp(str, "rrr\n"))
+		reverse_rotate_a_b(stack_a, stack_b);
+	else
+		return (ft_error());
+	return (1);
 }
 
-static void	ft_part_one(t_list **stack_a, t_list **stack_b, int max)
+int	ft_read_output(t_list **stack_a, t_list **stack_b)
 {
-	int	range_x;
-	int	range_y;
+	char	*str;
 
-	range_x = 0;
-	range_y = max * 0.048 + 15;
-	while (*stack_a != NULL)
+	while (1)
 	{
-		if ((*stack_a)->index >= range_x && (*stack_a)->index <= range_y)
+		str = get_next_line(0);
+		if (str == NULL)
+			break ;
+		if (ft_check_rule(stack_a, stack_b, str) == 0)
 		{
-			push_b(stack_b, stack_a);
-			range_x++;
-			range_y++;
+			free(str);
+			ft_lstclear(stack_a);
+			ft_lstclear(stack_b);
+			return (0);
 		}
-		else if ((*stack_a)->index < range_x)
-		{
-			push_b(stack_b, stack_a);
-			rotate_b(stack_b);
-			range_x++;
-			range_y++;
-		}
-		else if ((*stack_a)->index > range_y)
-			rotate_a(stack_a);
+		free(str);
 	}
-	return ;
-}
-
-void	ft_sort(t_list **stack_a, t_list **stack_b)
-{
-	int	max;
-	int	tmp;
-
-	max = ft_lstsize((*stack_a)) - 1;
-	if (max < 5)
-		return (sort_five_or_less(stack_a, stack_b));
-	ft_part_one(stack_a, stack_b, max);
-	while (*stack_b != NULL)
-	{
-		tmp = ft_position(stack_b, max);
-		if (tmp <= max / 2)
-			rotate_b(stack_b);
-		else if (tmp > max / 2)
-			reverse_rotate_b(stack_b);
-		if ((*stack_b)->index == max)
-		{
-			push_a(stack_a, stack_b);
-			max--;
-		}
-	}
+	return (1);
 }

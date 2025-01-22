@@ -6,11 +6,12 @@
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 13:11:49 by risattou          #+#    #+#             */
-/*   Updated: 2025/01/21 12:01:36 by risattou         ###   ########.fr       */
+/*   Updated: 2025/01/22 17:06:43 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
+#include <stdlib.h>
 
 static int	ft_check(char *av)
 {
@@ -111,6 +112,7 @@ int	main(int ac, char *av[])
 	stack_b = NULL;
 	ft_sortlist(&stack_a);
 	if (ft_lstsize(stack_a) > 1 && ft_is_sorted(&stack_a) == 1)
-			ft_sort(&stack_a, &stack_b);
+		ft_sort(&stack_a, &stack_b);
+	ft_lstclear(&stack_a);
 	return (0);
 }

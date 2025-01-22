@@ -6,13 +6,13 @@
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 13:47:38 by risattou          #+#    #+#             */
-/*   Updated: 2025/01/20 18:54:33 by risattou         ###   ########.fr       */
+/*   Updated: 2025/01/22 17:07:01 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
 
-static int	ft_position(t_list **stack_b, int max)
+int	ft_position(t_list **stack_b, int max)
 {
 	t_list	*tmp;
 	int		i;

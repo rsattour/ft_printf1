@@ -6,18 +6,18 @@
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:40:03 by risattou          #+#    #+#             */
-/*   Updated: 2025/01/21 12:45:32 by risattou         ###   ########.fr       */
+/*   Updated: 2025/01/22 12:39:33 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap_bonus.h"
 
-void	ft_putchar(char c)
+void	ft_putchar_fd(char c, int fd)
 {
-	write(1, &c, 1);
+	write(fd, &c, 1);
 }
 
-void	ft_putstr(char *str)
+void	ft_putstr_fd(char *str, int fd)
 {
 	int	i;
 
@@ -26,7 +26,7 @@ void	ft_putstr(char *str)
 		return ;
 	while (str[i] != '\0')
 	{
-		ft_putchar(str[i]);
+		ft_putchar_fd(str[i], fd);
 		i++;
 	}
 }

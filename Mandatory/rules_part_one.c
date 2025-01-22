@@ -6,7 +6,7 @@
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:49:55 by risattou          #+#    #+#             */
-/*   Updated: 2025/01/21 11:44:00 by risattou         ###   ########.fr       */
+/*   Updated: 2025/01/22 12:44:22 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	swap_a(t_list **stack_a)
 	if (!stack_a || !*stack_a)
 		return ;
 	swap_node(*stack_a, (*stack_a)->next);
-	ft_putstr("sa\n");
+	ft_putstr_fd("sa\n", 1);
 }
 
 void	swap_b(t_list **stack_b)
@@ -40,7 +40,7 @@ void	swap_b(t_list **stack_b)
 	if (!stack_b || !*stack_b)
 		return ;
 	swap_node(*stack_b, (*stack_b)->next);
-	ft_putstr("sb\n");
+	ft_putstr_fd("sb\n", 1);
 }
 
 void	push_b(t_list **stack_b, t_list **stack_a)
@@ -53,5 +53,5 @@ void	push_b(t_list **stack_b, t_list **stack_a)
 	*stack_a = (*stack_a)->next;
 	tmp->next = NULL;
 	ft_lstadd_front(stack_b, tmp);
-	ft_putstr("pb\n");
+	ft_putstr_fd("pb\n", 1);
 }

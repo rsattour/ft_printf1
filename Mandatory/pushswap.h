@@ -6,7 +6,7 @@
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 13:47:01 by risattou          #+#    #+#             */
-/*   Updated: 2025/01/21 11:53:34 by risattou         ###   ########.fr       */
+/*   Updated: 2025/01/22 17:04:58 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-void				ft_putstr(char *str);
+int					ft_position(t_list **stack_b, int max);
+void				ft_putstr_fd(char *str, int fd);
 void				rotate_a(t_list **stack_a);
 void				rotate_b(t_list **stack_b);
 void				swap_a(t_list **stack_a);

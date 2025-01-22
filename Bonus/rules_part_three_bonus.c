@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   rules_part_three_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 18:40:03 by risattou          #+#    #+#             */
-/*   Updated: 2025/01/22 12:42:03 by risattou         ###   ########.fr       */
+/*   Created: 2025/01/22 11:02:01 by risattou          #+#    #+#             */
+/*   Updated: 2025/01/22 13:05:45 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
-#include <sys/_types/_fd_def.h>
+#include "pushswap_bonus.h"
 
-void	ft_putchar_fd(char c, int fd)
+void	rotate_a_b(t_list **stack_b, t_list **stack_a)
 {
-	write(fd, &c, 1);
+	rotate_a(stack_a);
+	rotate_b(stack_b);
 }
 
-void	ft_putstr_fd(char *str, int fd)
+void	swap_a_b(t_list **stack_b, t_list **stack_a)
 {
-	int	i;
+	swap_a(stack_a);
+	swap_b(stack_b);
+}
 
-	i = 0;
-	if (!str)
-		return ;
-	while (str[i] != '\0')
-	{
-		ft_putchar_fd(str[i], fd);
-		i++;
-	}
+void	reverse_rotate_a_b(t_list **stack_b, t_list **stack_a)
+{
+	reverse_rotate_a(stack_a);
+	reverse_rotate_b(stack_b);
 }

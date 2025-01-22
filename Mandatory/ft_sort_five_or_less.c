@@ -6,7 +6,7 @@
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 17:10:34 by risattou          #+#    #+#             */
-/*   Updated: 2025/01/21 11:01:58 by risattou         ###   ########.fr       */
+/*   Updated: 2025/01/22 17:08:19 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,41 +40,27 @@ static void	sort_threenmbr(t_list **stack_a)
 	}
 }
 
-static int	find_pos(t_list *stack, int smallest)
+static void	ft_five_or_four(t_list **stack_a, t_list **stack_b, int size)
 {
-	t_list	*tmp;
-	int		pos;
-	int		target_pos;
+	int	smallest;
+	int	tmp;
 
-	tmp = stack;
-	pos = 0;
-	target_pos = 0;
-	while (tmp)
-	{
-		if (tmp->index == smallest)
-			target_pos = pos;
-		pos++;
-		tmp = tmp->next;
-	}
-	if (target_pos <= pos / 2)
-		return (1);
-	return (0);
-}
-
-static void	ft_five_or_for(t_list **stack_a, t_list **stack_b, int smallest)
-{
-	while (smallest < 2)
+	smallest = 0;
+	while (smallest < (size - 3))
 	{
 		if ((*stack_a)->index == smallest)
 		{
 			push_b(stack_b, stack_a);
 			smallest++;
-			continue ;
 		}
-		if (find_pos(*stack_a, smallest))
-			rotate_a(stack_a);
 		else
-			reverse_rotate_a(stack_a);
+		{
+			tmp = ft_position(stack_a, smallest);
+			if (tmp <= size / 2)
+				rotate_a(stack_a);
+			else
+				reverse_rotate_a(stack_a);
+		}
 	}
 }
 
@@ -91,7 +77,7 @@ void	sort_five_or_less(t_list **stack_a, t_list **stack_b)
 	}
 	if (size == 3)
 		return (sort_threenmbr(stack_a));
-	ft_five_or_for(stack_a, stack_b, 0);
+	ft_five_or_four(stack_a, stack_b, size);
 	sort_threenmbr(stack_a);
 	while (*stack_b)
 	{

@@ -6,11 +6,12 @@
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 13:11:49 by risattou          #+#    #+#             */
-/*   Updated: 2025/01/21 12:44:47 by risattou         ###   ########.fr       */
+/*   Updated: 2025/01/22 13:26:26 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap_bonus.h"
+#include <stdlib.h>
 
 static int	ft_check(char *av)
 {
@@ -110,7 +111,13 @@ int	main(int ac, char *av[])
 	stack_a = head;
 	stack_b = NULL;
 	ft_sortlist(&stack_a);
-	if (ft_lstsize(stack_a) > 1 && ft_is_sorted(&stack_a) == 1)
-			ft_sort(&stack_a, &stack_b);
+	if (!ft_read_output(&stack_a, &stack_b))
+		return (0);
+	if (ft_is_sorted(&stack_a) == 0)
+		ft_putstr_fd("OK\n", 1);
+	else
+		ft_putstr_fd("KO\n", 1);
+	ft_lstclear(&stack_a);
+	ft_lstclear(&stack_b);
 	return (0);
 }

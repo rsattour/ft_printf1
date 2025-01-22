@@ -6,7 +6,7 @@
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 13:16:56 by risattou          #+#    #+#             */
-/*   Updated: 2025/01/21 12:45:03 by risattou         ###   ########.fr       */
+/*   Updated: 2025/01/22 11:11:59 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int	check(const char *str)
 	return (0);
 }
 
-int	ft_strlen(const char *str)
+static int	ft_countlen(const char *str)
 {
 	int	i;
 	int	g;
@@ -57,7 +57,7 @@ int	ft_atoi_check(const char *str)
 	result = 0;
 	sign = 1;
 	i = 0;
-	if ((check(str) == 2) || (ft_strlen(str) > 11))
+	if ((check(str) == 2) || (ft_countlen(str) > 11))
 		return (ft_error());
 	if (str[i] == '+' || str[i] == '-')
 	{

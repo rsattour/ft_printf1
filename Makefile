@@ -8,15 +8,16 @@ SRC =	Mandatory/ft_atoi_check.c Mandatory/ft_atoi.c Mandatory/ft_error.c Mandato
 
 BNS =	Bonus/ft_atoi_check_bonus.c Bonus/ft_atoi_bonus.c Bonus/ft_error_bonus.c Bonus/ft_lstadd_back_bonus.c Bonus/ft_lstadd_front_bonus.c \
 		Bonus/ft_lstclear_bonus.c Bonus/ft_lstlast_bonus.c Bonus/ft_lstnew_bonus.c Bonus/ft_lstsize_bonus.c Bonus/ft_is_sorted_bonus.c \
-		Bonus/ft_putstr_bonus.c Bonus/ft_sort_five_or_less_bonus.c Bonus/ft_sortlist_bonus.c Bonus/ft_split_check_bonus.c \
-		Bonus/ft_split_bonus.c Bonus/main_sort_bonus.c Bonus/main_bonus.c Bonus/rules_part_one_bonus.c Bonus/rules_part_two_bonus.c
+		Bonus/ft_putstr_bonus.c  Bonus/ft_sortlist_bonus.c Bonus/ft_split_check_bonus.c \
+		Bonus/ft_split_bonus.c Bonus/main_sort_bonus.c Bonus/main_bonus.c Bonus/rules_part_one_bonus.c Bonus/rules_part_two_bonus.c \
+		Bonus/get_next_line/get_next_line.c Bonus/get_next_line/get_next_line_utils.c Bonus/ft_strcmp.c Bonus/rules_part_three_bonus.c
 
 SRCOB = ${SRC:.c=.o}
 BNSOB = ${BNS:.c=.o}
 HEADERM = Mandatory/pushswap.h
 HEADERB = Bonus/pushswap_bonus.h
 CC = cc
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror 
 
 ${NAME}: ${SRCOB} 
 	${CC} ${FLAGS} ${SRCOB} -o ${NAME}

@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 18:40:03 by risattou          #+#    #+#             */
-/*   Updated: 2025/01/22 12:42:03 by risattou         ###   ########.fr       */
+/*   Created: 2024/07/01 17:24:57 by risattou          #+#    #+#             */
+/*   Updated: 2025/01/22 10:25:06 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
-#include <sys/_types/_fd_def.h>
+#include "pushswap_bonus.h"
 
-void	ft_putchar_fd(char c, int fd)
-{
-	write(fd, &c, 1);
-}
-
-void	ft_putstr_fd(char *str, int fd)
+int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;
 
 	i = 0;
-	if (!str)
-		return ;
-	while (str[i] != '\0')
+	while (s1[i] != '\0' && s2[i] != '\0')
 	{
-		ft_putchar_fd(str[i], fd);
+		if (s1[i] != s2[i])
+			return (s1[i] - s2[i]);
 		i++;
 	}
+	return (s1[i] - s2[i]);
 }

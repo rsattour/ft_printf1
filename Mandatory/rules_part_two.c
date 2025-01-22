@@ -6,7 +6,7 @@
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 18:49:46 by risattou          #+#    #+#             */
-/*   Updated: 2025/01/20 18:50:12 by risattou         ###   ########.fr       */
+/*   Updated: 2025/01/22 12:45:06 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	push_a(t_list **stack_a, t_list **stack_b)
 	*stack_b = (*stack_b)->next;
 	tmp->next = NULL;
 	ft_lstadd_front(stack_a, tmp);
-	ft_putstr("pa\n");
+	ft_putstr_fd("pa\n", 1);
 }
 
 void	rotate_a(t_list **stack_a)
@@ -33,7 +33,7 @@ void	rotate_a(t_list **stack_a)
 	*stack_a = (*stack_a)->next;
 	tmp->next = NULL;
 	ft_lstadd_back(stack_a, tmp);
-	ft_putstr("ra\n");
+	ft_putstr_fd("ra\n", 1);
 }
 
 void	rotate_b(t_list **stack_b)
@@ -44,7 +44,7 @@ void	rotate_b(t_list **stack_b)
 	*stack_b = (*stack_b)->next;
 	tmp->next = NULL;
 	ft_lstadd_back(stack_b, tmp);
-	ft_putstr("rb\n");
+	ft_putstr_fd("rb\n", 1);
 }
 
 void	reverse_rotate_a(t_list **stack_a)
@@ -60,7 +60,7 @@ void	reverse_rotate_a(t_list **stack_a)
 	tmp = tmp1->next;
 	tmp1->next = NULL;
 	ft_lstadd_front(stack_a, tmp);
-	ft_putstr("rra\n");
+	ft_putstr_fd("rra\n", 1);
 }
 
 void	reverse_rotate_b(t_list **stack_b)
@@ -76,5 +76,5 @@ void	reverse_rotate_b(t_list **stack_b)
 	tmp = tmp1->next;
 	tmp1->next = NULL;
 	ft_lstadd_front(stack_b, tmp);
-	ft_putstr("rrb\n");
+	ft_putstr_fd("rrb\n", 1);
 }
