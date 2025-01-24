@@ -6,7 +6,7 @@
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 13:11:49 by risattou          #+#    #+#             */
-/*   Updated: 2025/01/22 13:26:26 by risattou         ###   ########.fr       */
+/*   Updated: 2025/01/24 13:04:09 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,15 +104,15 @@ int	main(int ac, char *av[])
 		return (0);
 	i = 1;
 	if (ft_check_av(ac, av) == 0)
-		return (0);
+		return (1);
 	head = NULL;
 	if (ft_create_list(ac, av, &head) == 0)
-		return (0);
+		return (1);
 	stack_a = head;
 	stack_b = NULL;
 	ft_sortlist(&stack_a);
 	if (!ft_read_output(&stack_a, &stack_b))
-		return (0);
+		return (1);
 	if (ft_is_sorted(&stack_a) == 0)
 		ft_putstr_fd("OK\n", 1);
 	else
