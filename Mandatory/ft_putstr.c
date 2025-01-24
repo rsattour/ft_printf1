@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "pushswap.h"
-#include <sys/_types/_fd_def.h>
 
 void	ft_putchar_fd(char c, int fd)
 {

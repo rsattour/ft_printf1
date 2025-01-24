@@ -37,7 +37,7 @@ int	ft_check_rule(t_list **stack_a, t_list **stack_b, char *str)
 	else if (!ft_strcmp(str, "rrr\n"))
 		reverse_rotate_a_b(stack_a, stack_b);
 	else
-		return (ft_error());
+		return (ft_error_r(&str));
 	return (1);
 }
 

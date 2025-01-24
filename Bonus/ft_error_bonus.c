@@ -17,3 +17,10 @@ int	ft_error(void)
 	ft_putstr_fd("Error\n", 2);
 	return (0);
 }
+int	ft_error_r(char **str)
+{
+	(void) *str;
+	free(*str);
+	ft_putstr_fd("Error\n", 2);
+	return (0);
+}

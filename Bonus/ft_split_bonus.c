@@ -14,11 +14,9 @@
 
 int	ft_split(char const *str, char c, t_list **lst)
 {
-	int		index;
 	int		i;
 	t_list	*node;
 
-	index = 0;
 	i = 0;
 	while (str[i])
 	{

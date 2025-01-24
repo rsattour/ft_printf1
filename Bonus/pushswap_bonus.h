@@ -27,6 +27,7 @@ typedef struct s_list
 int					ft_check_rule(t_list **stack_a, t_list **stack_b,
 						char *str);
 int					ft_strcmp(char *s1, char *s2);
+int	ft_error_r(char **str);
 void				ft_putstr_fd(char *str, int fd);
 int					ft_read_output(t_list **stack_a, t_list **stack_b);
 void				rotate_a(t_list **stack_a);

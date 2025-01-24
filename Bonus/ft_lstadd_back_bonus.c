@@ -26,11 +26,17 @@ int	ft_lstadd_back(t_list **lst, t_list *new)
 		while (head->next != NULL)
 		{
 			if (head->nb == new->nb)
-				return (ft_error());
+				{
+					free(new);
+					return (ft_error());
+					}
 			head = head->next;
 		}
 		if (head->nb == new->nb)
-			return (ft_error());
+				{
+					free(new);
+					return (ft_error());
+					}
 		head->next = new;
 	}
 	return (1);

@@ -95,14 +95,12 @@ static int	ft_create_list(int ac, char *av[], t_list **head)
 
 int	main(int ac, char *av[])
 {
-	int		i;
 	t_list	*head;
 	t_list	*stack_a;
 	t_list	*stack_b;
 
 	if (ac <= 1)
 		return (0);
-	i = 1;
 	if (ft_check_av(ac, av) == 0)
 		return (0);
 	head = NULL;
