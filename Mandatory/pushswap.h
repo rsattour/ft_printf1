@@ -6,7 +6,7 @@
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 13:47:01 by risattou          #+#    #+#             */
-/*   Updated: 2025/01/22 17:04:58 by risattou         ###   ########.fr       */
+/*   Updated: 2025/01/28 09:49:35 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ t_list				*ft_lstnew(int content);
 void				ft_lstclear(t_list **lst);
 void				ft_lstindex(t_list **lst);
 int					ft_lstsize(t_list *lst);
+int					ft_error_node(t_list *new_node);
 
 void				sort_five_or_less(t_list **stack_a, t_list **stack_b);
 void				ft_sortlist(t_list **stack_a);

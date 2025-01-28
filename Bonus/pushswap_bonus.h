@@ -6,7 +6,7 @@
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 13:47:01 by risattou          #+#    #+#             */
-/*   Updated: 2025/01/22 13:26:06 by risattou         ###   ########.fr       */
+/*   Updated: 2025/01/28 09:49:16 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ typedef struct s_list
 int					ft_check_rule(t_list **stack_a, t_list **stack_b,
 						char *str);
 int					ft_strcmp(char *s1, char *s2);
-int	ft_error_r(char **str);
+int					ft_error_r(char **str);
+int					ft_error_node(t_list *new_node);
 void				ft_putstr_fd(char *str, int fd);
 int					ft_read_output(t_list **stack_a, t_list **stack_b);
 void				rotate_a(t_list **stack_a);

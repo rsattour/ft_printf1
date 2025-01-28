@@ -6,12 +6,11 @@
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 13:11:49 by risattou          #+#    #+#             */
-/*   Updated: 2025/01/22 17:06:43 by risattou         ###   ########.fr       */
+/*   Updated: 2025/01/28 09:58:19 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pushswap.h"
-#include <stdlib.h>
 
 static int	ft_check(char *av)
 {

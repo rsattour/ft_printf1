@@ -6,7 +6,7 @@
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 13:21:39 by risattou          #+#    #+#             */
-/*   Updated: 2025/01/20 18:51:41 by risattou         ###   ########.fr       */
+/*   Updated: 2025/01/28 09:51:49 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ int	ft_lstadd_back(t_list **lst, t_list *new)
 		while (head->next != NULL)
 		{
 			if (head->nb == new->nb)
-				return (ft_error());
+				return (ft_error_node(new));
 			head = head->next;
 		}
 		if (head->nb == new->nb)
-			return (ft_error());
+			return (ft_error_node(new));
 		head->next = new;
 	}
 	return (1);
