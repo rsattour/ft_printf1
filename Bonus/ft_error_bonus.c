@@ -19,8 +19,10 @@ int	ft_error(void)
 }
 int	ft_error_r(char **str)
 {
-	(void) *str;
-	free(*str);
+	if (!(*str))
+		free(*str);
+	close(1);
+	get_next_line(1);
 	ft_putstr_fd("Error\n", 2);
 	return (0);
 }
