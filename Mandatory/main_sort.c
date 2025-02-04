@@ -6,7 +6,7 @@
 /*   By: risattou <risattou@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 13:47:38 by risattou          #+#    #+#             */
-/*   Updated: 2025/01/22 17:07:01 by risattou         ###   ########.fr       */
+/*   Updated: 2025/02/04 10:15:44 by risattou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static void	ft_part_one(t_list **stack_a, t_list **stack_b, int max)
 	int	range_y;
 
 	range_x = 0;
-	range_y = max * 0.048 + 15;
+	range_y = max * 0.05 + 15;
 	while (*stack_a != NULL)
 	{
 		if ((*stack_a)->index >= range_x && (*stack_a)->index <= range_y)
